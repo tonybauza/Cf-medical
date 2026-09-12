@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CF Medical</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;font-family:Arial,sans-serif;background:#f5f8fc;color:#17213b}button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+#auth{min-height:100vh;background:linear-gradient(155deg,#173b6c,#2a6fb0 48%,#eef6ff 48%);padding:30px 18px;display:flex;align-items:center;justify-content:center}.authbox{width:min(470px,100%);background:white;border-radius:24px;box-shadow:0 24px 70px #0b2a4f55;padding:24px}.brand{display:flex;align-items:center;gap:12px;margin-bottom:18px}.logo{width:58px;height:58px;border-radius:18px;background:#2a6fb0;color:white;font-weight:900;font-size:22px;display:grid;place-items:center}.brand h1{margin:0;font-size:27px}.brand small{color:#6e7c94}.tabs{display:grid;grid-template-columns:1fr 1fr;background:#eef3fa;padding:4px;border-radius:12px;margin:15px 0}.tabs button{border:0;border-radius:9px;background:transparent;padding:11px;font-weight:800}.tabs button.active{background:white;box-shadow:0 2px 8px #1b355a18}.form{display:none}.form.active{display:block}.field{display:block;margin:12px 0;font-weight:700;font-size:13px}.field input{width:100%;margin-top:6px;padding:13px;border:1px solid #d5dfec;border-radius:12px;outline:none}.primary{width:100%;border:0;background:#2a6fb0;color:white;padding:14px;border-radius:12px;font-weight:900}.status{margin-top:10px;font-size:13px;color:#b02b2b}
+header{position:sticky;top:0;z-index:20;background:white;border-bottom:1px solid #e1e8f2}.head{max-width:1180px;margin:auto;padding:12px 14px;display:flex;gap:12px;align-items:center}.head .logo{width:44px;height:44px;border-radius:13px;font-size:17px}.title{font-weight:900;line-height:1}.title small{display:block;color:#7d8aa0;font-size:10px;margin-top:4px}.search{flex:1;display:flex;gap:8px}.search input,.search select{min-width:0;padding:11px;border:1px solid #d7e0ec;border-radius:11px;background:#fbfdff}.search input{flex:1}.search select{max-width:230px}.account{border:0;background:#eef5ff;color:#173b6c;border-radius:11px;padding:10px 12px;font-weight:800}
+.hero{max-width:1180px;margin:18px auto 12px;padding:0 14px}.heroBox{background:linear-gradient(135deg,#173b6c,#2a6fb0);color:white;border-radius:22px;padding:24px}.heroBox h2{margin:0 0 8px;font-size:27px}.heroBox p{margin:0;opacity:.9}.chips{display:flex;gap:8px;overflow:auto;padding:14px 0 2px}.chip{white-space:nowrap;border:1px solid #d7e0ec;background:white;border-radius:999px;padding:9px 13px;font-weight:800;color:#3e4d66}.chip.active{background:#2a6fb0;color:white;border-color:#2a6fb0}
+main{max-width:1180px;margin:auto;padding:0 14px 110px}.summary{display:flex;justify-content:space-between;align-items:center;margin:14px 0;color:#697890;font-size:13px}.products{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.card{background:white;border:1px solid #e1e8f2;border-radius:17px;padding:15px;display:flex;flex-direction:column;min-height:185px;box-shadow:0 5px 18px #28496d0b}.cat{font-size:10px;text-transform:uppercase;color:#2a6fb0;font-weight:900}.card h3{font-size:14px;line-height:1.35;margin:9px 0 7px}.ref{font-size:10px;color:#8a96a8}.price{font-weight:900;font-size:18px;margin:auto 0 10px}.consult{font-size:12px;color:#6c7a90}.add{border:0;background:#173b6c;color:white;padding:10px;border-radius:10px;font-weight:900}
+#cartbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:10px;background:#173b6c;color:white;border-radius:16px;padding:12px 14px;box-shadow:0 12px 30px #0e274a66}.cartmain{font-weight:900}.cartmain small{display:block;font-weight:400;opacity:.8}.cartopen{border:0;background:white;color:#173b6c;border-radius:11px;padding:11px 15px;font-weight:900}
+#drawer{position:fixed;inset:0;z-index:60;background:#0d1d3266;display:none;justify-content:flex-end}.panel{width:min(430px,100%);height:100%;background:white;display:flex;flex-direction:column}.panelhead{padding:17px;border-bottom:1px solid #e4e9f1;display:flex;justify-content:space-between;align-items:center}.panelhead h2{margin:0}.close{border:0;background:#eef3f9;border-radius:10px;padding:8px 11px}.cartitems{padding:12px;overflow:auto;flex:1}.cartrow{border-bottom:1px solid #edf0f4;padding:12px 0;display:grid;grid-template-columns:1fr auto;gap:8px}.cartrow h4{margin:0 0 5px;font-size:13px}.cartrow small{color:#7b8799}.qty{display:flex;align-items:center;gap:8px}.qty button{width:30px;height:30px;border:0;border-radius:8px;background:#eef3f9}.cartfoot{padding:15px;border-top:1px solid #e4e9f1}.total{display:flex;justify-content:space-between;font-size:20px;font-weight:900;margin-bottom:10px}.empty{text-align:center;color:#7b8799;padding:35px 10px}
+@media(max-width:850px){.products{grid-template-columns:repeat(2,minmax(0,1fr))}.head{flex-wrap:wrap}.search{order:3;width:100%}.search select{display:none}.account{margin-left:auto}.heroBox h2{font-size:23px}}
+@media(max-width:480px){.products{grid-template-columns:1fr 1fr;gap:8px}.card{padding:11px;min-height:180px}.card h3{font-size:12px}.price{font-size:16px}.heroBox{padding:19px}.heroBox h2{font-size:21px}.title{font-size:14px}.account{padding:9px;font-size:12px}}
+</style>
+</head>
+<body>
+<section id="auth">
+  <div class="authbox">
+    <div class="brand"><div class="logo">CF</div><div><h1>CF Medical</h1><small>Suministros sanitarios</small></div></div>
+    <p>Área profesional de clientes. Inicia sesión o crea tu cuenta para acceder al catálogo.</p>
+    <div class="tabs"><button id="loginTab" class="active">Iniciar sesión</button><button id="regTab">Crear cuenta</button></div>
+    <form id="loginForm" class="form active">
+      <label class="field">Email<input id="loginEmail" type="email" required placeholder="cliente@empresa.com"></label>
+      <label class="field">Contraseña<input id="loginPass" type="password" minlength="6" required placeholder="Mínimo 6 caracteres"></label>
+      <button class="primary">Entrar en CF Medical</button>
+    </form>
+    <form id="regForm" class="form">
+      <label class="field">Nombre y apellidos<input id="regName" required></label>
+      <label class="field">Empresa / centro<input id="regCompany" required></label>
+      <label class="field">Teléfono<input id="regPhone" type="tel" required></label>
+      <label class="field">Email<input id="regEmail" type="email" required></label>
+      <label class="field">Contraseña<input id="regPass" type="password" minlength="6" required></label>
+      <button class="primary">Registrarme y acceder</button>
+    </form>
+    <div id="authStatus" class="status"></div>
+  </div>
+</section>
+<div id="app" class="hidden">
+<header><div class="head"><div class="logo">CF</div><div class="title">CF Medical<small>SUMINISTROS SANITARIOS</small></div><div class="search"><input id="q" placeholder="Buscar productos o referencias..."><select id="category"><option value="">Todas las categorías</option></select></div><button id="logout" class="account">Salir</button></div></header>
+<section class="hero"><div class="heroBox"><h2>Material sanitario profesional</h2><p>Catálogo CF Medical · Compra rápida desde móvil · Carrito siempre visible</p></div><div id="chips" class="chips"></div></section>
+<main><div class="summary"><span id="count"></span><span>Pedido mínimo Mallorca 70 € · Península 140 €</span></div><div id="products" class="products"></div></main>
+<div id="cartbar"><div class="cartmain">🛒 Carrito <span id="badge">0</span><small id="cartSummary">0 productos · 0,00 €</small></div><button id="openCart" class="cartopen">Ver carrito</button></div>
+</div>
+<div id="drawer"><div class="panel"><div class="panelhead"><h2>Tu carrito</h2><button id="closeCart" class="close">✕</button></div><div id="cartItems" class="cartitems"></div><div class="cartfoot"><div class="total"><span>Total</span><span id="total">0,00 €</span></div><button id="clearCart" class="primary">Vaciar carrito</button></div></div></div>
+<script>const PRODUCTS=[];</script>
+<script src="p1.js"></script><script src="p2.js"></script><script src="p3.js"></script><script src="p4.js"></script>
+<script>
+const $=s=>document.querySelector(s); const euro=n=>(n||0).toLocaleString('es-ES',{style:'currency',currency:'EUR'}); const safe=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+let cart=JSON.parse(localStorage.getItem('cf_cart')||'{}'); let activeCat='';
+function showApp(){ $('#auth').classList.add('hidden'); $('#app').classList.remove('hidden'); render(); renderCart(); }
+function setTab(reg){ $('#loginTab').classList.toggle('active',!reg); $('#regTab').classList.toggle('active',reg); $('#loginForm').classList.toggle('active',!reg); $('#regForm').classList.toggle('active',reg); $('#authStatus').textContent=''; }
+$('#loginTab').onclick=()=>setTab(false); $('#regTab').onclick=()=>setTab(true);
+$('#loginForm').onsubmit=e=>{e.preventDefault(); if($('#loginPass').value.length<6)return; localStorage.setItem('cf_session','1'); localStorage.setItem('cf_email',$('#loginEmail').value); showApp();};
+$('#regForm').onsubmit=e=>{e.preventDefault(); if($('#regPass').value.length<6)return; localStorage.setItem('cf_user',JSON.stringify({name:$('#regName').value,company:$('#regCompany').value,phone:$('#regPhone').value,email:$('#regEmail').value})); localStorage.setItem('cf_session','1'); showApp();};
+$('#logout').onclick=()=>{localStorage.removeItem('cf_session');location.reload()};
+const cats=[...new Set(PRODUCTS.map(p=>p.category))].sort(); cats.forEach(c=>$('#category').insertAdjacentHTML('beforeend',`<option>${safe(c)}</option>`)); $('#chips').innerHTML='<button class="chip active" data-c="">Todo</button>'+cats.map(c=>`<button class="chip" data-c="${safe(c)}">${safe(c)}</button>`).join('');
+$('#chips').onclick=e=>{if(!e.target.classList.contains('chip'))return; activeCat=e.target.dataset.c; document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===e.target)); $('#category').value=activeCat;render();}; $('#category').onchange=e=>{activeCat=e.target.value; document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.c===activeCat));render()}; $('#q').oninput=render;
+function render(){const q=$('#q').value.trim().toLowerCase(); const list=PRODUCTS.filter(p=>(!activeCat||p.category===activeCat)&&(!q||p.name.toLowerCase().includes(q)||p.sku.toLowerCase().includes(q)||p.category.toLowerCase().includes(q))); $('#count').textContent=list.length+' productos'; $('#products').innerHTML=list.map(p=>`<article class="card"><div class="cat">${safe(p.category)}</div><h3>${safe(p.name)}</h3><div class="ref">REF. ${safe(p.sku)}</div><div class="price">${p.price?euro(p.price):'<span class="consult">Precio a consultar</span>'}</div><button class="add" onclick="add('${String(p.sku).replace(/'/g,"\\'")}')">Añadir</button></article>`).join('');}
+function add(sku){cart[sku]=(cart[sku]||0)+1; saveCart();} function change(sku,d){cart[sku]=(cart[sku]||0)+d;if(cart[sku]<=0)delete cart[sku];saveCart();} function saveCart(){localStorage.setItem('cf_cart',JSON.stringify(cart));renderCart();}
+function renderCart(){let units=0,sum=0,rows=[];Object.entries(cart).forEach(([sku,q])=>{let p=PRODUCTS.find(x=>x.sku===sku);if(!p)return;units+=q;sum+=(p.price||0)*q;rows.push(`<div class="cartrow"><div><h4>${safe(p.name)}</h4><small>${safe(p.sku)} · ${p.price?euro(p.price):'Consultar'}</small></div><div class="qty"><button onclick="change('${String(sku).replace(/'/g,"\\'")}',-1)">−</button><b>${q}</b><button onclick="change('${String(sku).replace(/'/g,"\\'")}',1)">+</button></div></div>`)});$('#badge').textContent=units;$('#cartSummary').textContent=units+' unidades · '+euro(sum);$('#total').textContent=euro(sum);$('#cartItems').innerHTML=rows.join('')||'<div class="empty">Todavía no has añadido productos.</div>';}
+$('#openCart').onclick=()=>$('#drawer').style.display='flex'; $('#closeCart').onclick=()=>$('#drawer').style.display='none'; $('#drawer').onclick=e=>{if(e.target.id==='drawer')$('#drawer').style.display='none'}; $('#clearCart').onclick=()=>{cart={};saveCart();};
+if(localStorage.getItem('cf_session')==='1')showApp(); else renderCart();
+</script>
+</body></html>
